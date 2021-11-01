@@ -4,6 +4,13 @@ import tkinter as tk
 
 class Tela:
 
+    
+    def fechar(self, event):
+
+        janela.destroy()
+        exit()
+        
+            
     def __init__(self, master):
 
         monitor = PhotoImage(file="monitor.png")
@@ -22,6 +29,14 @@ class Tela:
         lbDelete.config(bg="red")
         lbDelete.bind("<Button-1>", self.bios)
         lbDelete.place(x=842, y=722)
+
+        self.sair = Button(janela, text="X")
+        self.sair["font"] = ("Arial", "19")
+        self.sair.config(bg="red", foreground="white")
+        self.sair.place(x=1100, y=30)
+        self.sair.bind("<Button-1>", self.fechar)
+        
+
 
     def bios(self, event):
 
@@ -222,10 +237,12 @@ class Tela:
         self.l13 = tk.Label(jan2,foreground="white",background="#00008B",text="First Boot Device")
         self.l13["font"] = ("Lucida Console","15")
         self.l13.place(x=30, y=250)
+        
 
         self.l14 = tk.Label(jan2,foreground="#FFD700",background="red",text="CD-ROM")
         self.l14["font"] = ("Lucida Console","15")
         self.l14.place(x=400, y=250)
+        self.l14.bind("<Button-1>", self.boot)
 
         self.l15 = tk.Label(jan2,foreground="white",background="#00008B",text="Second Boot Device")
         self.l15["font"] = ("Lucida Console","15")
@@ -351,6 +368,19 @@ class Tela:
         self.p17 = tk.Label(jan2,foreground="white",background="#00008B",text="-Menu Level >")
         self.p17["font"] = ("Lucida Console","15")
         self.p17.place(x=650, y=180)
+
+        jan2.mainloop()
+
+    def boot(self,event):
+
+        messagebox.showinfo("BOOT PELO PENDRIVE", "REINICIANDO E INICIANDO INSTALAÇÃO")
+
+        w1 = PhotoImage(file="w1.png")
+        self.img1 = Label(janela, image=w1)
+        self.img1.w1 = w1
+        self.img1.place(x=126, y=53)
+
+    
 
     
 
