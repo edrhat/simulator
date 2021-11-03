@@ -7,19 +7,15 @@ from tkinter import ttk
 
 class Tela:
 
-    
+
     def fechar(self, event):
 
         janela.destroy()
-        exit()
-
-    
-        
     
 
     def fecharPc(self, event):
         
-      
+        self.imgFundo.place_forget()
 
         self.imgg2.place_forget()
         self.lbGabinete.config(bg="white")
@@ -87,11 +83,18 @@ class Tela:
 
         lbMonitor.place(x=1800, y=10)
 
+        
+        fundobranco = PhotoImage(file="fundobranco.png")
+        self.imgFundo = Label(janela, image=fundobranco)
+        self.imgFundo.fundobranco = fundobranco
+        self.imgFundo.config(bg="white")
+        self.imgFundo.place(x=80,y=30)
+        
         gabineteAberto = PhotoImage(file="gabineteAberto.png")
         self.imggg = Label(janela, image=gabineteAberto)
         self.imggg.gabineteAberto = gabineteAberto
         self.lbGabinete.config(bg="green")
-        self.imggg.place(x=30,y=100)
+        self.imggg.place(x=60,y=100)
 
         hd = PhotoImage(file="hd.png")
         self.imgg2 = Label(janela, image=hd)
@@ -148,6 +151,8 @@ class Tela:
         self.imgg9.config(bg="green")
         self.lbGabinete.config(bg="green")
         self.imgg9.place(x=650,y=370)
+        
+    
     
 
     def bios(self, event):
@@ -165,6 +170,8 @@ class Tela:
         linhaV = tk.Label(janela2,foreground="white",background="#00008B",text="|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n")
         linhaV["font"] = ("Lucida Console","12")
         linhaV.place(x=470,y=90)
+
+        
         
         
         #Label 1
@@ -279,6 +286,9 @@ class Tela:
         janela2.config(cursor="hand2")
         janela2.resizable(width=False, height=False)
         janela2.mainloop()
+
+    def fecharBios(self, event):
+        janela2.destroy()   
 
     def bios2(self, event):
 
@@ -483,13 +493,19 @@ class Tela:
 
         jan2.mainloop()
 
+            
+       
+    
     def boot(self,event):
-
+        
+            
         messagebox.showinfo("WINDOWS 10", "Iniciando instalação...")
+        
         w1 = PhotoImage(file="w1.png")
         self.img1 = Label(janela, image=w1)
         self.img1.w1 = w1
         self.img1.place(x=123, y=50)
+        
 
         abnts = ["(Português Brasil ABNT-2)", "(Português Brasil ABNT)"]
         abnt = ttk.Combobox(values=abnts)
