@@ -3,6 +3,8 @@ from tkinter import messagebox
 import tkinter as tk
 from tkinter import ttk
 
+
+
 class Tela:
 
     
@@ -151,7 +153,6 @@ class Tela:
     def bios(self, event):
 
         janela2 = tk.Tk()
-        print("DELETE PRESSIONADO")
         #Label inicial
         p1 = tk.Label(janela2,foreground="white",background="#00008B",text="CMOS Setup Utility - Copyright (C) 1984-1999 Award Software")
         p1["font"] = ("Lucida Console","18")
@@ -641,6 +642,7 @@ class Tela:
         
 
 janela = Tk()
+
 Tela(janela)
 janela.title("Simulador Formatação")
 janela.geometry("1200x800+50+20")
@@ -648,4 +650,6 @@ janela.resizable(width=False, height=False)
 janela.config(bg="white")
 janela.config(cursor="hand2")
 janela.attributes("-fullscreen", True)
+janela.iconbitmap("cj.ico")
+messagebox.showinfo("Simulator", "Bem-Vindo !!")
 janela.mainloop()
