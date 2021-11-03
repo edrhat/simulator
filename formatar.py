@@ -11,6 +11,7 @@ class Tela:
     def fechar(self, event):
 
         janela.destroy()
+        exit()
     
 
     def fecharPc(self, event):
@@ -77,6 +78,14 @@ class Tela:
         self.sair.config(bg="red", foreground="white")
         self.sair.place(x=1200, y=30)
         self.sair.bind("<Button-1>", self.fechar)
+
+        self.simulador = Button(janela, text="Simular defeitos nos componentes")
+        self.simulador["font"] = ("Arial", "18")
+        self.simulador.config(bg="#0E7415", foreground="white")
+        self.simulador.place(x=50, y=840)
+    
+
+        
 
     def abrirPc(self, event):
         global lbMonitor
