@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import tkinter as tk
+from tkinter import ttk
 
 class Tela:
 
@@ -9,19 +10,62 @@ class Tela:
 
         janela.destroy()
         exit()
+
+    
         
-            
+    
+
+    def fecharPc(self, event):
+        
+      
+
+        self.imgg2.place_forget()
+        self.lbGabinete.config(bg="white")
+        lbMonitor.place(x=100, y=30)
+        self.imggg.place_forget()
+
+        self.imgg3.place_forget()
+        
+
+        self.imgg4.place_forget()
+        
+
+        self.imgg5.place_forget()
+       
+
+        self.imgg6.place_forget()
+       
+
+        self.imgg7.place_forget()
+        
+
+        self.imgg8.place_forget()
+       
+
+        self.imgg9.place_forget()
+        
+
+
+
     def __init__(self, master):
 
+        global lbMonitor
         monitor = PhotoImage(file="monitor.png")
-        lbMonitor = Label(janela, image=monitor)
+        lbMonitor = Label(image=monitor)
         lbMonitor.monitor = monitor
         lbMonitor.place(x=100, y=30)
 
+        gabinete = PhotoImage(file="gabinete.png")
+        self.lbGabinete = Label(janela, image=gabinete)
+        self.lbGabinete.gabinete = gabinete
+        self.lbGabinete.place(x=970, y=285)
+        self.lbGabinete.bind("<Enter>", self.abrirPc)
+        self.lbGabinete.bind("<Leave>", self.fecharPc)
+
         teclado = PhotoImage(file="teclado.png")
-        lbMonitor = Label(janela, image=teclado)
-        lbMonitor.teclado = teclado
-        lbMonitor.place(x=50, y=530)
+        lbTeclado = Label(janela, image=teclado)
+        lbTeclado.teclado = teclado
+        lbTeclado.place(x=50, y=530)
 
         delete = PhotoImage(file="delete.png")
         lbDelete = Label(janela, image=delete)
@@ -30,13 +74,79 @@ class Tela:
         lbDelete.bind("<Button-1>", self.bios)
         lbDelete.place(x=842, y=722)
 
-        self.sair = Button(janela, text="X")
-        self.sair["font"] = ("Arial", "19")
+        self.sair = Button(janela, text="[X]")
+        self.sair["font"] = ("Arial", "15")
         self.sair.config(bg="red", foreground="white")
-        self.sair.place(x=1100, y=30)
+        self.sair.place(x=1200, y=30)
         self.sair.bind("<Button-1>", self.fechar)
-        
 
+    def abrirPc(self, event):
+        global lbMonitor
+
+        lbMonitor.place(x=1800, y=10)
+
+        gabineteAberto = PhotoImage(file="gabineteAberto.png")
+        self.imggg = Label(janela, image=gabineteAberto)
+        self.imggg.gabineteAberto = gabineteAberto
+        self.lbGabinete.config(bg="green")
+        self.imggg.place(x=30,y=100)
+
+        hd = PhotoImage(file="hd.png")
+        self.imgg2 = Label(janela, image=hd)
+        self.imgg2.hd = hd
+        self.imgg2.config(bg="green")
+        self.lbGabinete.config(bg="green")
+        self.imgg2.place(x=500,y=30)
+
+        fonte = PhotoImage(file="fonte.png")
+        self.imgg3 = Label(janela, image=fonte)
+        self.imgg3.fonte = fonte
+        self.imgg3.config(bg="green")
+        self.lbGabinete.config(bg="green")
+        self.imgg3.place(x=650,y=30)
+
+        cpu = PhotoImage(file="cpu.png")
+        self.imgg4 = Label(janela, image=cpu)
+        self.imgg4.cpu = cpu
+        self.imgg4.config(bg="green")
+        self.lbGabinete.config(bg="green")
+        self.imgg4.place(x=800,y=30)
+
+        placa = PhotoImage(file="placa.png")
+        self.imgg5 = Label(janela, image=placa)
+        self.imgg5.placa = placa
+        self.imgg5.config(bg="green")
+        self.lbGabinete.config(bg="green")
+        self.imgg5.place(x=500,y=200)
+
+        memoria = PhotoImage(file="memoria.png")
+        self.imgg6 = Label(janela, image=memoria)
+        self.imgg6.memoria = memoria
+        self.imgg6.config(bg="green")
+        self.lbGabinete.config(bg="green")
+        self.imgg6.place(x=650,y=200)
+
+        sata = PhotoImage(file="sata.png")
+        self.imgg7 = Label(janela, image=sata)
+        self.imgg7.sata = sata
+        self.imgg7.config(bg="green")
+        self.lbGabinete.config(bg="green")
+        self.imgg7.place(x=800,y=200)
+
+        cooler = PhotoImage(file="cooler.png")
+        self.imgg8 = Label(janela, image=cooler)
+        self.imgg8.cooler = cooler
+        self.imgg8.config(bg="green")
+        self.lbGabinete.config(bg="green")
+        self.imgg8.place(x=500,y=370)
+
+        gpu = PhotoImage(file="gpu.png")
+        self.imgg9 = Label(janela, image=gpu)
+        self.imgg9.gpu = gpu
+        self.imgg9.config(bg="green")
+        self.lbGabinete.config(bg="green")
+        self.imgg9.place(x=650,y=370)
+    
 
     def bios(self, event):
 
@@ -63,7 +173,7 @@ class Tela:
         self.p2.place(x=80, y=100)
         
         #Label 2
-        self.p3 = tk.Label(janela2,foreground="#FFD700",background="#00008B",text="> Advanced BIOS Features")
+        self.p3 = tk.Label(janela2,foreground="yellow",background="red",text="> Advanced BIOS Features")
         self.p3["font"] = ("Lucida Console","15")
         self.p3.place(x=80, y=140)
         self.p3.bind("<Button-1>", self.bios2)
@@ -165,6 +275,7 @@ class Tela:
         janela2.title("BIOS")
         janela2.geometry("880x640+200+30")
         janela2.config(bg="#00008B")
+        janela2.config(cursor="hand2")
         janela2.resizable(width=False, height=False)
         janela2.mainloop()
 
@@ -373,12 +484,155 @@ class Tela:
 
     def boot(self,event):
 
-        messagebox.showinfo("BOOT PELO PENDRIVE", "REINICIANDO E INICIANDO INSTALAÇÃO")
-
+        messagebox.showinfo("WINDOWS 10", "Iniciando instalação...")
         w1 = PhotoImage(file="w1.png")
         self.img1 = Label(janela, image=w1)
         self.img1.w1 = w1
-        self.img1.place(x=126, y=53)
+        self.img1.place(x=123, y=50)
+
+        abnts = ["(Português Brasil ABNT-2)", "(Português Brasil ABNT)"]
+        abnt = ttk.Combobox(values=abnts)
+        abnt.set("(Português Brasil ABNT)")
+        abnt.place(x=412, y=262, width=337, height=22)
+
+        btAvancar = PhotoImage(file="btAvancar.png")
+        self.img2 = Label(janela, image=btAvancar)
+        self.img2.btAvancar = btAvancar
+        self.img2.place(x=740, y=324)
+        self.img2.bind("<Button-1>", self.avancar)
+
+    def avancar(self, event):
+        w2 = PhotoImage(file="w2.png")
+        self.img3 = Label(janela, image=w2)
+        self.img3.w2 = w2
+        self.img3.place(x=123, y=50)
+
+        btInstalar = PhotoImage(file="btInstalar.png")
+        self.img4 = Label(janela, image=btInstalar)
+        self.img4.btInstalar = btInstalar
+        self.img4.place(x=400, y=205)
+        self.img4.bind("<Button-1>", self.instalar)
+
+    def instalar(self, event):
+
+        w3 = PhotoImage(file="w3.png")
+        self.img5 = Label(janela, image=w3)
+        self.img5.w3 = w3
+        self.img5.place(x=113, y=52)
+
+        chave = PhotoImage(file="chave.png")
+        self.img6 = Label(janela, image=chave)
+        self.img6.chave = chave
+        self.img6.place(x=485, y=290)
+        self.img6.bind("<Button-1>", self.chaveW)
+
+        btAvancar2 = PhotoImage(file="btAvancar2.png")
+        self.img7 = Label(janela, image=btAvancar2)
+        self.img7.btAvancar2 = btAvancar2
+        self.img7.place(x=726, y=300)
+        self.img7.bind("<Button-1>", self.avancar2)
+
+    def chaveW(self, event):
+
+        self.img6.config(bg="lightblue")
+
+        
+    def avancar2(self, event):
+
+        w4 = PhotoImage(file="w4.png")
+        self.img8 = Label(janela, image=w4)
+        self.img8.w4 = w4
+        self.img8.place(x=112, y=49)
+
+        btAvancar3 = PhotoImage(file="btAvancar3.png")
+        self.img9 = Label(janela, image=btAvancar3)
+        self.img9.btAvancar3 = btAvancar3
+        self.img9.place(x=726, y=300)
+        self.img9.bind("<Button-1>", self.avancar3)
+
+    def avancar3(self, event):
+
+        w5 = PhotoImage(file="w5.png")
+        self.img10 = Label(janela, image=w5)
+        self.img10.w5 = w5
+        self.img10.place(x=112, y=49)
+
+        btAvancar4 = PhotoImage(file="btAvancar4.png")
+        self.img11 = Label(janela, image=btAvancar4)
+        self.img11.btAvancar4 = btAvancar4
+        self.img11.place(x=726, y=305)
+        self.img11.bind("<Button-1>", self.avancar4)
+
+    def avancar4(self, event):
+
+        w6 = PhotoImage(file="w6.png")
+        self.img12 = Label(janela, image=w6)
+        self.img12.w6 = w6
+        self.img12.place(x=112, y=49)
+
+        personalizada = PhotoImage(file="personalizada.png")
+        self.img13 = Label(janela, image=personalizada)
+        self.img13.personalizada = personalizada
+        self.img13.place(x=206, y=205)
+        self.img13.bind("<Button-1>", self.avancar5)
+
+    def avancar5(self, event):
+
+        w7 = PhotoImage(file="w7.png")
+        self.img14 = Label(janela, image=w7)
+        self.img14.w7 = w7
+        self.img14.place(x=112, y=49)
+
+        formatar = PhotoImage(file="formatar.png")
+        self.img15 = Label(janela, image=formatar)
+        self.img15.formatar = formatar
+        self.img15.place(x=460, y=238)
+        self.img15.bind("<Button-1>", self.formatarW)
+
+        btAvancar6 = PhotoImage(file="btAvancar6.png")
+        self.img16 = Label(janela, image=btAvancar6)
+        self.img16.btAvancar6 = btAvancar6
+        self.img16.place(x=726, y=310)
+        self.img16.bind("<Button-1>", self.avancar6)
+    
+    def formatarW(self, event):
+
+        messagebox.showwarning("Formatação Windows 10", "TODOS OS DADOS DESSA PARTIÇÃO SERÃO EXCLUÍDOS !!")
+
+    
+    def avancar6(self, event):
+
+        w8 = PhotoImage(file="w8.png")
+        self.img18 = Label(janela, image=w8)
+        self.img18.w8 = w8
+        self.img18.place(x=112, y=49)
+        self.img18.bind("<Button-1>", self.win)
+
+    def win(self, event):
+
+        w9 = PhotoImage(file="w9.png")
+        self.img19 = Label(janela, image=w9)
+        self.img19.w9 = w9
+        self.img19.place(x=112, y=49)
+        self.img19.bind("<Button-1>", self.win10)
+
+    def win10(self, event):
+
+        w10 = PhotoImage(file="w10.png")
+        self.img20 = Label(janela, image=w10)
+        self.img20.w10 = w10
+        self.img20.place(x=112, y=49)
+        
+        
+    
+
+        
+    
+        
+
+        
+        
+        
 
     
 
