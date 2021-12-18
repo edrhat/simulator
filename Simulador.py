@@ -3,7 +3,7 @@ from tkinter import messagebox
 import tkinter as tk
 from tkinter import ttk
 
-
+#IMAGENS DEFEITO: 240X240
 
 class Tela:
 
@@ -15,6 +15,8 @@ class Tela:
     
 
     def fecharPc(self, event):
+
+        self.lb_simulador.place_forget()
         
         self.imgFundo.place_forget()
 
@@ -60,6 +62,7 @@ class Tela:
         self.lbGabinete.place(x=970, y=285)
         self.lbGabinete.bind("<Enter>", self.abrirPc)
         self.lbGabinete.bind("<Leave>", self.fecharPc)
+        self.lbGabinete.bind("<Button-1>", self.defeitos)
 
         teclado = PhotoImage(file="teclado.png")
         lbTeclado = Label(janela, image=teclado)
@@ -80,10 +83,48 @@ class Tela:
         self.sair.bind("<Button-1>", self.fechar)
 
         
+    def defeitos(self, event):
+        janela2 = Tk()
 
+        self.p = Label(janela2, text="O computador liga normalmente mas não aparece nada\n no monitor. Quais peças devem ser testadas ?")
+        self.p["font"] = ("Lucida console", "30")
+        self.p.config(bg="black", foreground="limegreen")
+        self.p.place(x=140, y=30)
+
+        img_monitor = PhotoImage(master=janela2, file="monitor2.png")
+        self.monitor2 = Label(janela2, image=img_monitor)
+        self.monitor2.img_monitor = img_monitor
+        self.monitor2.place(x=120,y=200)
+
+        img_placa = PhotoImage(master=janela2, file="placa2.png")
+        self.placa = Label(janela2, image=img_placa)
+        self.placa.img_placa = img_placa
+        self.placa.place(x=420,y=200)
+
+        img_hd = PhotoImage(master=janela2, file="hd2.png")
+        self.hd = Label(janela2, image=img_hd)
+        self.hd.img_hd = img_hd
+        self.hd.place(x=720,y=200)
+
+        img_gpu = PhotoImage(master=janela2, file="gpu2.png")
+        self.gpu = Label(janela2, image=img_gpu)
+        self.gpu.img_gpu = img_gpu
+        self.gpu.place(x=1020,y=200)
+
+
+
+        
+        janela.title("Simulador de defeitos")
+        janela2.geometry("1400x830+50+5")
+        
     def abrirPc(self, event):
         global lbMonitor
 
+        self.lb_simulador = Label(janela, text="Clique para iniciar\n simulador de defeitos")
+        self.lb_simulador["font"] = ("Arial", "20")
+        self.lb_simulador.config(bg="black", foreground="white")
+        self.lb_simulador.place(x=970, y=210)
+        
         lbMonitor.place(x=1800, y=10)
 
         
@@ -764,10 +805,9 @@ janela = Tk()
 
 Tela(janela)
 janela.title("Simulador Formatação")
-janela.geometry("1200x800+50+20")
+janela.geometry("1400x830+50+5")
 janela.resizable(width=False, height=False)
 janela.config(bg="white")
 janela.config(cursor="hand2")
-janela.attributes("-fullscreen", True)
 janela.iconbitmap("placa2.ico")
 janela.mainloop()
